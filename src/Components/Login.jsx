@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import techMateLogo from "../../src/assets/techMateLogo.png";
-
-const BASE_URL = "http://localhost:7777";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/slice/userSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
 
     const handleSubmit = async () => {
         try {
@@ -17,6 +19,7 @@ const Login = () => {
                 withCredentials: true
             });
             console.log(res?.data);
+            dispatch(addUser(res?.data));
         } catch (error) {
             console.log("ERROR:", error);
         }
