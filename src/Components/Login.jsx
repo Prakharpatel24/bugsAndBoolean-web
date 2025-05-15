@@ -4,11 +4,14 @@ import techMateLogo from "../../src/assets/techMateLogo.png";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
 import { BASE_URL } from "../utils/constants";
+import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async () => {
         try {
@@ -18,9 +21,10 @@ const Login = () => {
             }, {
                 withCredentials: true
             });
-            console.log(res?.data);
             dispatch(addUser(res?.data));
+            if (res?.data?.status === 200) navigate("/");
         } catch (error) {
+            toast.error(error?.response?.data?.message);
             console.log("ERROR:", error);
         }
     }
