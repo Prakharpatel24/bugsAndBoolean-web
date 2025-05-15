@@ -4,6 +4,9 @@ import Login from './Components/Login'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import appStore from './utils/store/appStore'
+import Feed from './Components/Feed'
+import Profile from './Components/Profile'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
@@ -12,11 +15,16 @@ function App() {
         <BrowserRouter basename='/'>
           <Routes>
             <Route path='/' element={<Body />}>
-              <Route path='/' element={<Login />} />
+              <Route path='/' element={<Feed />} />
+              <Route path='login' element={<Login />} />
+              <Route path='profile' element={<Profile />} />
             </Route>
           </Routes>
         </BrowserRouter>
       </Provider>
+      <ToastContainer
+        position='top-center'
+      />
     </>
   )
 }
