@@ -18,14 +18,14 @@ const UserCardFeed = ({ user }) => {
                         </span>;
                     </h2>
                 </div>
-                <span>Runtime: {age} years</span>
-                <span>Gender: {gender}</span>
-                <span>Skills: {skills}</span>
-                <span>About: {about}</span>
+                <span className="font-mono">Runtime: {age} years</span>
+                <span className="font-mono">Gender: {gender}</span>
+                <span className="font-mono">Skills: {`${[skills]}`}</span>
+                <span className="font-mono">About: {about}</span>
                 <p></p>
                 <div className="card-actions justify-between">
-                    <button className="btn bg-red-600">Git Ignore</button>
-                    <button className="btn bg-green-600">Let's Git It</button>
+                    <button className="btn bg-red-600 font-mono">Git Ignore</button>
+                    <button className="btn bg-green-600 font-mono">Let's Git It</button>
                 </div>
             </div>
         </div>
