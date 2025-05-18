@@ -133,8 +133,9 @@ const EditProfile = ({ user }) => {
                     about,
                     photoURL,
                     skills
-                }
-            } />
+                }}
+                showConnectionButtons={true}
+            />
         </>
     )
 }
