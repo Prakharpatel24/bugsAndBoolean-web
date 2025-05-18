@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/slice/userSlice";
+import { removeFeed } from "../utils/slice/feedSlice";
 
 const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -22,7 +23,8 @@ const Navbar = () => {
                 {},
                 { withCredentials: true }
             );
-            dispatch(removeUser(null));
+            dispatch(removeUser());
+            dispatch(removeFeed(null));
             navigate("/login");
         } catch (error) {
             console.log("ERROR:", error);
