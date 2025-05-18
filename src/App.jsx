@@ -7,6 +7,7 @@ import appStore from './utils/store/appStore'
 import Feed from './Components/Feed'
 import Profile from './Components/Profile'
 import { ToastContainer } from 'react-toastify'
+import Connections from './Components/Connections'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path='/' element={<Feed />} />
               <Route path='login' element={<Login />} />
               <Route path='profile' element={<Profile />} />
+              <Route path='connections' element={<Connections />} />
             </Route>
           </Routes>
         </BrowserRouter>
