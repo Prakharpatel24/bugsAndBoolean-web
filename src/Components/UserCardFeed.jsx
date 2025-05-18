@@ -1,4 +1,5 @@
-const UserCardFeed = ({ user }) => {
+const UserCardFeed = ({ user, showConnectionButtons }) => {
+    console.log(user, "user");
     const { firstName, lastName, age, gender, about, photoURL, skills } = user;
     console.log(about, "about");
     return (
@@ -6,7 +7,8 @@ const UserCardFeed = ({ user }) => {
             <figure>
                 <img
                     src={photoURL}
-                    alt="Shoes"/>
+                    alt="Shoes"
+                />
             </figure>
             <div className="card-body">
                 <div>
@@ -23,10 +25,10 @@ const UserCardFeed = ({ user }) => {
                 <span className="font-mono">Skills: {`${[skills]}`}</span>
                 <span className="font-mono">About: {about}</span>
                 <p></p>
-                <div className="card-actions justify-between">
+                {showConnectionButtons && <div className="card-actions justify-between">
                     <button className="btn bg-red-600 font-mono">Git Ignore</button>
                     <button className="btn bg-green-600 font-mono">Let's Git It</button>
-                </div>
+                </div>}
             </div>
         </div>
     )
