@@ -31,7 +31,10 @@ const Feed = () => {
         <>
             {feedData &&
                 <div className="flex justify-center items-center p-30">
-                    <UserCardFeed user={feedData[0]} />
+                    <UserCardFeed
+                        user={feedData[0]}
+                        showConnectionButtons={true}
+                    />
                 </div>}
         </>
     )
