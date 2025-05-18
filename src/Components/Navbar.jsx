@@ -68,6 +68,11 @@ const Navbar = () => {
                                     Connections
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/requests">
+                                    Pending Requests
+                                </Link>
+                            </li>
                             <li onClick={handleLogoutBtnClick}><a>Logout</a></li>
                         </ul>}
                 </div>
