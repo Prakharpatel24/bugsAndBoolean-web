@@ -34,7 +34,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-300 shadow-sm">
             <div className="flex-1">
-                <Link to="/" className="btn btn-ghost text-xl">TechMate</Link>
+                <Link to="/" className="btn btn-ghost text-xl">Bugs&Boolean</Link>
             </div>
             {userInfo?.data && <div className="flex gap-2">
                 <div className="dropdown dropdown-end mr-3">

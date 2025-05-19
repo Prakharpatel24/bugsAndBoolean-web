@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import techMateLogo from "../../src/assets/techMateLogo.png";
+import bugsAndBooleanLogo from "../../src/assets/bugsAndBooleanLogo.png";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
 import { BASE_URL } from "../utils/constants";
@@ -35,7 +35,7 @@ const Login = () => {
                 <div className="card-body">
                     <figure>
                         <img
-                            src={techMateLogo}
+                            src={bugsAndBooleanLogo}
                             alt="techMateLogo" />
                     </figure>
                     <h2 className="card-title mb-2.5">Login</h2>
@@ -60,6 +60,11 @@ const Login = () => {
                         >
                             Submit
                         </button>
+                    </div>
+                    <div className="flex justify-center">
+                        <span>New to Bugs&Boolean ?
+                            <a className="link-info cursor-pointer hover:underline"> Join Now</a>
+                        </span>
                     </div>
                 </div>
             </div>
