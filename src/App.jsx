@@ -9,6 +9,7 @@ import Profile from './Components/Profile'
 import { ToastContainer } from 'react-toastify'
 import Connections from './Components/Connections'
 import Requests from './Components/Requests'
+import SignUp from './Components/SignUp'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path='profile' element={<Profile />} />
               <Route path='connections' element={<Connections />} />
               <Route path='requests' element={<Requests />} />
+              <Route path='signup' element={<SignUp />} />
             </Route>
           </Routes>
         </BrowserRouter>
