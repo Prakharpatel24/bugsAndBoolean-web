@@ -4,7 +4,7 @@ import bugsAndBooleanLogo from "../../src/assets/bugsAndBooleanLogo.png";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
 import { BASE_URL } from "../utils/constants";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -63,7 +63,12 @@ const Login = () => {
                     </div>
                     <div className="flex justify-center">
                         <span>New to Bugs&Boolean ?
-                            <a className="link-info cursor-pointer hover:underline"> Join Now</a>
+                            <Link
+                                to="/signup"
+                                className="link-info cursor-pointer hover:underline"
+                            >
+                                Join Now
+                            </Link>
                         </span>
                     </div>
                 </div>
