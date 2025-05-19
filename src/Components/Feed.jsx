@@ -27,17 +27,27 @@ const Feed = () => {
         getFeed()
     }, [])
 
-    return (
-        <>
-            {feedData &&
-                <div className="flex justify-center items-center p-30">
-                    <UserCardFeed
-                        user={feedData[0]}
-                        showConnectionButtons={true}
-                    />
-                </div>}
-        </>
-    )
+    return feedData?.length === 0
+        ? (
+            <div className="p-5">
+                <div className="mockup-code w-full">
+                    <pre
+                        data-prefix="$">
+                        <code>That's all for now! Check back later for more updates.</code>
+                    </pre>
+                </div>
+            </div>
+        ) : (
+            <>
+                {feedData &&
+                    <div className="flex justify-center items-center p-30">
+                        <UserCardFeed
+                            user={feedData[0]}
+                            showConnectionButtons={true}
+                        />
+                    </div>}
+            </>
+        )
 }
 
 export default Feed;
