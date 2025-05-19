@@ -94,13 +94,13 @@ const Requests = () => {
                                                 </div>
                                                 <div className="flex justify-center p-5">
                                                     <button
-                                                        className="btn bg-red-600 mr-5"
+                                                        className="btn bg-red-600 mr-5 hover:bg-red-700"
                                                         onClick={() => handleReviewRequest("rejected", request?._id)}
                                                     >
                                                         Reject
                                                     </button>
                                                     <button
-                                                        className="btn bg-green-600"
+                                                        className="btn bg-green-600 hover:bg-green-700"
                                                         onClick={() => handleReviewRequest("accepted", request?._id)}
                                                     >
                                                         Accept
