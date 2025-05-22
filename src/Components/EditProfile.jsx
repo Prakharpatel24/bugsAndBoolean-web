@@ -21,7 +21,7 @@ const EditProfile = ({ user }) => {
     const navigate = useNavigate();
 
     console.log(about);
-    
+
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -56,88 +56,98 @@ const EditProfile = ({ user }) => {
     }
 
     return (
-        <>
-            <div className="card bg-base-300 w-96 shadow-sm mr-10">
+        <div className="flex flex-col md:flex-row justify-center items-start md:items-stretch p-6 md:p-10 gap-8 max-w-7xl mx-auto">
+            <div className="card bg-base-300 w-full md:w-96 shadow-sm">
                 <div className="card-body">
                     <h2 className="card-title mb-4">Edit Profile</h2>
 
-                    <span>Firstname</span>
+                    <label className="block mb-1 font-semibold">Firstname</label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                     />
 
-                    <span>Lastname</span>
+                    <label className="block mb-1 font-semibold">Lastname</label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
 
-                    <span>Age</span>
+                    <label className="block mb-1 font-semibold">Age</label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 ttext-gray-400"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
                     />
 
-                    <span>Gender</span>
+                    <label className="block mb-1 font-semibold">Gender</label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={gender}
                         onChange={(e) => setGender(e.target.value)}
                     />
 
-                    <span>About</span>
+                    <label className="block mb-1 font-semibold">About</label>
                     <textarea
-                        className="textarea text-gray-400"
+                        className="textarea textarea-bordered w-full mb-4 text-gray-400 resize-none"
                         value={about}
                         onChange={(e) => setAbout(e.target.value)}
-                    >
+                        rows={4}
+                    />
 
-                    </textarea>
-
-                    <span>PhotoURL</span>
+                    <label className="block mb-1 font-semibold">PhotoURL</label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={photoURL}
                         onChange={(e) => setPhotoURL(e.target.value)}
                     />
 
-                    <span>Skills (Done? Just hit Enter)</span>
+                    <label className="block mb-1 font-semibold">
+                        Skills (Done? Just hit Enter)
+                    </label>
                     <input
                         type="text"
-                        className="input text-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={currentSkills}
                         onChange={(e) => setCurrentSkills([e.target.value])}
                         onKeyDown={handleKeyDown}
                     />
 
                     <div className="card-actions justify-center mt-2">
-                        <button className="btn btn-primary" onClick={handleSubmitClick}>Submit</button>
+                        <button
+                            className="btn btn-primary w-full md:w-auto"
+                            onClick={handleSubmitClick}
+                        >
+                            Submit
+                        </button>
                     </div>
                 </div>
             </div>
-            <UserCardFeed user={
-                {
-                    firstName,
-                    lastName,
-                    age,
-                    gender,
-                    about,
-                    photoURL,
-                    skills
-                }}
-                showConnectionButtons={true}
-            />
-        </>
-    )
+
+            <div className="w-full md:w-auto md:flex-1">
+                <UserCardFeed
+                    user={{
+                        firstName,
+                        lastName,
+                        age,
+                        gender,
+                        about,
+                        photoURL,
+                        skills,
+                    }}
+                    showConnectionButtons={true}
+                />
+            </div>
+        </div>
+    );
+
 }
 
 export default EditProfile;

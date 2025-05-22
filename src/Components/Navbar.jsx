@@ -32,53 +32,65 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-300 shadow-sm">
+        <div className="sticky top-0 z-50 navbar bg-base-300 shadow-sm px-4 sm:px-6 md:px-10">
             <div className="flex-1">
-                <Link to="/" className="btn btn-ghost text-xl">Bugs&Boolean</Link>
+                <Link to="/" className="btn btn-ghost text-lg sm:text-xl">
+                    Bugs&Boolean
+                </Link>
             </div>
-            {userInfo?.data && <div className="flex gap-2">
-                <div className="dropdown dropdown-end mr-3">
-                    <div className="flex items-center">
-                        <span className="mr-2 capitalize">Welcome, {userInfo?.data?.firstName}</span>
-                        <div
-                            tabIndex={0}
-                            role="button"
-                            className="btn btn-ghost btn-circle avatar"
-                            onClick={handleUserAvatarClick}
-                        >
-                            <div className="w-10 rounded-full">
-                                <img
-                                    alt="Tailwind CSS Navbar component"
-                                    src={userInfo?.data?.photoURL} />
+
+            {userInfo?.data && (
+                <div className="flex items-center gap-2">
+                    <div className="dropdown dropdown-end">
+                        <div className="flex items-center">
+                            <span className="hidden sm:block mr-2 capitalize text-sm sm:text-base">
+                                Welcome, {userInfo?.data?.firstName}
+                            </span>
+                            <div
+                                tabIndex={0}
+                                role="button"
+                                className="btn btn-ghost btn-circle avatar"
+                                onClick={handleUserAvatarClick}
+                            >
+                                <div className="w-9 sm:w-10 rounded-full">
+                                    <img
+                                        alt="User Avatar"
+                                        src={userInfo?.data?.photoURL}
+                                        className="object-cover"
+                                    />
+                                </div>
                             </div>
                         </div>
+
+                        {isDropdownOpen && (
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-48 sm:w-52 p-2 shadow"
+                            >
+                                <li>
+                                    <Link to="/profile" className="justify-between">
+                                        Profile
+                                        <span className="badge">New</span>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/connections">Connections</Link>
+                                </li>
+                                <li>
+                                    <Link to="/requests">Pending Requests</Link>
+                                </li>
+                                <li onClick={handleLogoutBtnClick}>
+                                    <a>Logout</a>
+                                </li>
+                            </ul>
+                        )}
                     </div>
-                    {isDropdownOpen &&
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li>
-                                <Link to="/profile" className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/connections">
-                                    Connections
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to="/requests">
-                                    Pending Requests
-                                </Link>
-                            </li>
-                            <li onClick={handleLogoutBtnClick}><a>Logout</a></li>
-                        </ul>}
                 </div>
-            </div>}
+            )}
         </div>
-    )
+    );
+
+
 }
 
 export default Navbar;

@@ -36,8 +36,7 @@ const Profile = () => {
     return (
         <div className="flex justify-center p-10">
             {userData &&
-                <EditProfile user={userData.data} />
-            }
+                <EditProfile user={userData.data} />}
         </div>
     )
 }

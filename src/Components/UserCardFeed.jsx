@@ -35,45 +35,79 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
         }
     }
     return (
-        <div className="card bg-base-300 w-96 shadow-sm p-5">
-            <figure>
+        <div className="mockup-code w-full max-w-sm sm:max-w-md md:max-w-lg bg-base-300 shadow-xl rounded-xl p-5 sm:p-8 border border-base-200">
+            <figure className="w-full flex justify-center mb-6">
                 <img
                     src={photoURL}
-                    alt="Shoes"
+                    alt="Profile"
+                    className="w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full object-cover ring ring-accent ring-offset-base-100 ring-offset-2 shadow-md"
                 />
             </figure>
-            <div className="card-body">
-                <div>
-                    <h2 className="card-title">const dev =
+
+            <div className="card-body p-0 text-center">
+                <h2 className="text-xl md:text-2xl font-bold font-mono text-cyan-300 mb-2 break-words">
+                    const dev = <span>{`"${firstName} ${lastName}"`}</span>;
+                </h2>
+
+                <div className="text-sm sm:text-base space-y-2 mb-4">
+                    <p className="font-mono text-neutral-content">Runtime: <span className="text-primary">{age} years</span></p>
+                    {gender && <p
+                        className="font-mono text-neutral-content"
+                    >
+                        Gender:
                         <span
-                            className="text-cyan-300"
+                            className="capitalize"
                         >
-                            {`"${firstName + " " + lastName}"`}
-                        </span>;
-                    </h2>
+                            {" " + gender}
+                        </span>
+                    </p>}
+
+                    {skills[0] !== "" && <div className="font-mono text-neutral-content">
+                        Skills:
+                        <div className="flex flex-wrap justify-center gap-1 mt-1">
+                            {(Array.isArray(skills) ? skills : skills.split(',')).map((skill, i) => (
+                                <span
+                                    key={i}
+                                    className="badge badge-accent badge-outline text-xs sm:text-sm px-2 py-1"
+                                >
+                                    {skill.trim()}
+                                </span>
+                            ))}
+                        </div>
+                    </div>}
+
+                    {about && <div className="font-mono text-neutral-content">
+                        About:
+                        <p className="mt-1 max-h-28 overflow-y-auto text-sm px-3">{about}</p>
+                    </div>}
                 </div>
-                <span className="font-mono">Runtime: {age} years</span>
-                <span className="font-mono">Gender: {gender}</span>
-                <span className="font-mono">Skills: {`${[skills]}`}</span>
-                <span className="font-mono">About: {about}</span>
-                <p></p>
-                {showConnectionButtons && <div className="card-actions justify-between">
-                    <button
-                        className="btn bg-red-600 hover:bg-red-700"
-                        onClick={() => handleConnectionButtonClick("ignored", _id)}
-                    >
-                        Git Ignore
-                    </button>
-                    <button
-                        className="btn bg-green-600 hover:bg-green-700"
-                        onClick={() => handleConnectionButtonClick("interested", _id)}
-                    >
-                        Let's Git It
-                    </button>
-                </div>}
+
+                {showConnectionButtons && (
+                    <div className="card-actions mt-5 flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
+                        <button
+                            className="btn btn-error btn-outline w-full sm:w-auto"
+                            onClick={() => handleConnectionButtonClick("ignored", _id)}
+                        >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-12.728 12.728M5.636 5.636l12.728 12.728" />
+                            </svg>
+                            Git Ignore
+                        </button>
+                        <button
+                            className="btn btn-success w-full sm:w-auto"
+                            onClick={() => handleConnectionButtonClick("interested", _id)}
+                        >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                            Let's Git It
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
-    )
+    );
+
 }
 
 export default UserCardFeed;

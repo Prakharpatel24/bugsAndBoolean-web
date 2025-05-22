@@ -29,23 +29,24 @@ const Feed = () => {
 
     return feedData?.length === 0
         ? (
-            <div className="p-5">
-                <div className="mockup-code w-full">
-                    <pre
-                        data-prefix="$">
+            <div className="px-4 py-6 sm:px-6 md:px-10 lg:px-16">
+                <div className="mockup-code w-full max-w-3xl mx-auto text-sm sm:text-base">
+                    <pre data-prefix="$">
                         <code>That's all for now! Check back later for more updates.</code>
                     </pre>
                 </div>
             </div>
+
         ) : (
             <>
                 {feedData &&
-                    <div className="flex justify-center items-center p-30">
+                    <div className="flex justify-center items-center px-4 py-6 sm:px-8 sm:py-10 md:px-16 md:py-20">
                         <UserCardFeed
                             user={feedData[0]}
                             showConnectionButtons={true}
                         />
-                    </div>}
+                    </div>
+                }
             </>
         )
 }

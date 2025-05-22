@@ -30,51 +30,60 @@ const Login = () => {
     }
 
     return (
-        <div className="flex justify-center items-center p-20">
-            <div className="card card-border bg-base-300 w-96">
-                <div className="card-body">
-                    <figure>
-                        <img
-                            src={bugsAndBooleanLogo}
-                            alt="techMateLogo" />
-                    </figure>
-                    <h2 className="card-title mb-2.5">Login</h2>
-                    <input
-                        type="text"
-                        placeholder="Email"
-                        className="input mb-2.5"
-                        value={emailId}
-                        onChange={(e) => setEmailId(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        className="input mb-2.5"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <div className="card-actions justify-center">
+        <div className="min-h-screen flex flex-col md:flex-row">
+            
+            <div className="w-full md:w-1/2 bg-base-100 md:bg-base-200 lg:bg-base-200 flex items-center justify-center p-6 md:p-8">
+                <img
+                    src={bugsAndBooleanLogo}
+                    alt="Bugs & Boolean Logo"
+                    className="max-w-[120px] sm:max-w-xs md:max-w-md"
+                />
+            </div>
+
+            <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-12 bg-base-100">
+                <div className="w-full max-w-md">
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Welcome Back</h2>
+
+                    <div className="space-y-4">
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            className="input input-bordered w-full"
+                            value={emailId}
+                            onChange={(e) => setEmailId(e.target.value)}
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            className="input input-bordered w-full"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+
                         <button
-                            className="btn btn-primary"
+                            className="btn btn-primary w-full"
                             onClick={handleSubmit}
                         >
-                            Submit
+                            Login
                         </button>
                     </div>
-                    <div className="flex justify-center">
-                        <span>New to Bugs&Boolean ?
-                            <Link
-                                to="/signup"
-                                className="link-info cursor-pointer hover:underline"
-                            >
-                                Join Now
-                            </Link>
-                        </span>
-                    </div>
+
+                    <p className="mt-4 text-center text-sm">
+                        New to <strong>Bugs&Boolean</strong>?{" "}
+                        <Link
+                            to="/signup"
+                            className="link link-info hover:underline"
+                        >
+                            Join Now
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
-    )
+    );
+
+
 }
 
 export default Login;
