@@ -1,33 +1,22 @@
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import UserCardFeed from "./UserCardFeed";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isOpen } from "../utils/slice/navbarDropdownSlice";
+import useFetchRequests from "../utils/customHooks/useFetchRequests";
+import useFetchConnections from "../utils/customHooks/useFetchConnections";
 
 const Requests = () => {
-    const [requestData, setRequestData] = useState(null);
+    // const [requestData, setRequestData] = useState(null);
+    const requestData = useSelector((store) => store.requests.requestData);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { getRequests } = useFetchRequests();
+    const { getConnections } = useFetchConnections();
 
-    dispatch(isOpen(false));
-
-    const getRequests = async () => {
-        try {
-            const res = await axios.get(BASE_URL + "/user/requests", { withCredentials: true });
-            setRequestData(res?.data);
-        } catch (err) {
-            if (err?.response?.data?.status === 401) {
-                navigate("/login");
-            }
-            if (err?.response?.data?.status !== 200) {
-                toast.error(err?.response?.data?.message);
-            }
-            console.log('Error:', err);
-        }
-    }
 
     const handleReviewRequest = async (status, _id) => {
         try {
@@ -39,7 +28,9 @@ const Requests = () => {
             );
             if (res?.data?.status === 200) {
                 toast.success(res?.data?.message);
-                getRequests();
+                await getRequests();
+                await getConnections();
+                // getRequests();
             }
         } catch (err) {
             if (err?.response?.data?.status === 401) {
@@ -51,10 +42,9 @@ const Requests = () => {
             console.log('Error:', err);
         }
     }
-
     useEffect(() => {
-        getRequests();
-    }, [])
+        dispatch(isOpen(false));
+    }, []);
 
     return requestData?.length === 0 ? (
         <div className="p-5 max-w-xl mx-auto">
