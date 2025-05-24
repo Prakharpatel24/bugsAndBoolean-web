@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFeed } from "../utils/slice/feedSlice";
 import UserCardFeed from "./UserCardFeed";
 import { useNavigate } from "react-router";
+import useFetchConnections from "../utils/customHooks/useFetchConnections";
+import useFetchRequests from "../utils/customHooks/useFetchRequests";
 
 const Feed = () => {
     const feedData = useSelector((store) => store.feed);
     console.log(feedData, "feedData");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    useFetchConnections();
+    useFetchRequests();
 
     const getFeed = async () => {
         try {
@@ -23,9 +27,10 @@ const Feed = () => {
             console.log("ERROR:", error);
         }
     }
+
     useEffect(() => {
         getFeed()
-    }, [])
+    }, []);
 
     return feedData?.length === 0
         ? (
