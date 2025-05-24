@@ -5,9 +5,13 @@ import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/slice/userSlice";
 import { removeFeed } from "../utils/slice/feedSlice";
 import { isOpen } from "../utils/slice/navbarDropdownSlice";
+import { clearNumberOfConnections, removeConnectionData } from "../utils/slice/connectionsSlice";
+import { clearNumberOfRequests } from "../utils/slice/requestsSlice";
 
 const Navbar = () => {
     const navbarDropdown = useSelector((store) => store.navbarDropdown.dropdown);
+    const numberOfConnections = useSelector((store) => store.connections.numberOfConnections);
+    const numberOfRequests = useSelector((store) => store.requests.numberOfRequests);
     const userInfo = useSelector((store) => store.user.userInfo);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,6 +29,9 @@ const Navbar = () => {
             );
             dispatch(removeUser());
             dispatch(removeFeed(null));
+            dispatch(removeConnectionData());
+            dispatch(clearNumberOfConnections());
+            dispatch(clearNumberOfRequests());
             navigate("/login");
         } catch (error) {
             console.log("ERROR:", error);
@@ -70,14 +77,13 @@ const Navbar = () => {
                                 <li>
                                     <Link to="/profile" className="justify-between">
                                         Profile
-                                        <span className="badge">New</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/connections">Connections</Link>
+                                    <Link to="/connections">Connections ({numberOfConnections})</Link>
                                 </li>
                                 <li>
-                                    <Link to="/requests">Pending Requests</Link>
+                                    <Link to="/requests">Pending Requests ({numberOfRequests})</Link>
                                 </li>
                                 <li onClick={handleLogoutBtnClick}>
                                     <a>Logout</a>
