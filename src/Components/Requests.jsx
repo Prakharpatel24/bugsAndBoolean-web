@@ -4,10 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import UserCardFeed from "./UserCardFeed";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { isOpen } from "../utils/slice/navbarDropdownSlice";
 
 const Requests = () => {
     const [requestData, setRequestData] = useState(null);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    dispatch(isOpen(false));
+
     const getRequests = async () => {
         try {
             const res = await axios.get(BASE_URL + "/user/requests", { withCredentials: true });

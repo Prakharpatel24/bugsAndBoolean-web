@@ -4,11 +4,17 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import UserCardFeed from "./UserCardFeed";
+import { useDispatch } from "react-redux";
+import { isOpen } from "../utils/slice/navbarDropdownSlice";
 
 const Connections = () => {
 
     const [connectionData, setConnectionData] = useState(null);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    dispatch(isOpen(false));
+    
     const getConnections = async () => {
         try {
             const res = await axios.get(BASE_URL + "/user/connections", { withCredentials: true });

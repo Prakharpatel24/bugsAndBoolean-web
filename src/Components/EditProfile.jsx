@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+import { isOpen } from "../utils/slice/navbarDropdownSlice";
 
 const EditProfile = ({ user }) => {
     const [firstName, setFirstName] = useState(user?.firstName);
@@ -20,8 +21,7 @@ const EditProfile = ({ user }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    console.log(about);
-
+    dispatch(isOpen(false));
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -142,7 +142,7 @@ const EditProfile = ({ user }) => {
                         photoURL,
                         skills,
                     }}
-                    showConnectionButtons={true}
+                    showConnectionButtons={false}
                 />
             </div>
         </div>

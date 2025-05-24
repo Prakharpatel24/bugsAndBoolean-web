@@ -1,19 +1,19 @@
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/slice/userSlice";
 import { removeFeed } from "../utils/slice/feedSlice";
+import { isOpen } from "../utils/slice/navbarDropdownSlice";
 
 const Navbar = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const navbarDropdown = useSelector((store) => store.navbarDropdown.dropdown);
     const userInfo = useSelector((store) => store.user.userInfo);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleUserAvatarClick = () => {
-        isDropdownOpen ? setIsDropdownOpen(false) : setIsDropdownOpen(true);
+        navbarDropdown ? dispatch(isOpen(false)) : dispatch(isOpen(true));
     }
 
     const handleLogoutBtnClick = async () => {
@@ -62,7 +62,7 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {isDropdownOpen && (
+                        {navbarDropdown && (
                             <ul
                                 tabIndex={0}
                                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-48 sm:w-52 p-2 shadow"
