@@ -1,37 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
-import { toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate } from "react-router";
 import UserCardFeed from "./UserCardFeed";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { isOpen } from "../utils/slice/navbarDropdownSlice";
+import useFetchConnections from "../utils/customHooks/useFetchConnections";
 
 const Connections = () => {
-
-    const [connectionData, setConnectionData] = useState(null);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    dispatch(isOpen(false));
+    useFetchConnections();
+    const connectionData = useSelector((store)=> store.connections.connectionData);
     
-    const getConnections = async () => {
-        try {
-            const res = await axios.get(BASE_URL + "/user/connections", { withCredentials: true });
-            setConnectionData(res?.data?.data);
-        } catch (err) {
-            if (err?.response?.data?.status === 401) navigate("/login");
-            if (err?.response?.data?.status !== 200) {
-                toast.error(err?.response?.data?.message);
-            }
-            console.log('ERROR:', err);
-        }
-    }
-
     useEffect(() => {
-        getConnections()
-    }, [])
-
+        dispatch(isOpen(false));
+    }, []);
+    
     return connectionData?.length === 0 ? (
         <div className="p-5 max-w-xl mx-auto">
             <div className="mockup-code w-full">
