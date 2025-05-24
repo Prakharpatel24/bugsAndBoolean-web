@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserCardFeed from "./UserCardFeed";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
@@ -21,13 +21,15 @@ const EditProfile = ({ user }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    dispatch(isOpen(false));
-
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             setSkills([...currentSkills]);
         }
     }
+
+    useEffect(() => {
+        dispatch(isOpen(false));
+    }, []);
 
     const handleSubmitClick = async () => {
         try {
