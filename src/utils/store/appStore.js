@@ -1,13 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../slice/userSlice";
 import feedReducer from "../slice/feedSlice";
-import navbarDropdownSlice from "../slice/navbarDropdownSlice";
+import navbarDropdownSliceReducer from "../slice/navbarDropdownSlice";
+import connectionsReducer from "../slice/connectionsSlice";
+import requestsReducer from "../slice/requestsSlice";
 
 const appStore = configureStore({
     reducer: {
         user: userReducer,
         feed: feedReducer,
-        navbarDropdown: navbarDropdownSlice
+        navbarDropdown: navbarDropdownSliceReducer,
+        connections: connectionsReducer,
+        requests: requestsReducer
     }
 });
 
