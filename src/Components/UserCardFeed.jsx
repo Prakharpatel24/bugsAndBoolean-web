@@ -46,7 +46,7 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
 
             <div className="card-body p-0 text-center">
                 <h2 className="text-xl md:text-2xl font-bold font-mono text-cyan-300 mb-2 break-words">
-                    const dev = <span>{`"${firstName} ${lastName}"`}</span>;
+                    const name = <span>{`"${firstName} ${lastName}"`}</span>;
                 </h2>
 
                 <div className="text-sm sm:text-base space-y-2 mb-4">
