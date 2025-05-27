@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import Connections from './Components/Connections'
 import Requests from './Components/Requests'
 import SignUp from './Components/SignUp'
+import PrivacyPolicy from './Components/PrivacyPolicy'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path='connections' element={<Connections />} />
               <Route path='requests' element={<Requests />} />
               <Route path='signup' element={<SignUp />} />
+              <Route path='privacy-policy' element={<PrivacyPolicy />} />
             </Route>
           </Routes>
         </BrowserRouter>
