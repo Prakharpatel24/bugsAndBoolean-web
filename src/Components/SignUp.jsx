@@ -23,19 +23,29 @@ const SignUp = () => {
     const handleSubmitClick = async () => {
         try {
             if (firstName === "") {
-                return toast.error("First name is required.");
+                return toast.error("First name is required.", {
+                    toastId: "first-name-required"
+                });
             }
             if (lastName === "") {
-                return toast.error("Last name is required.");
+                return toast.error("Last name is required.", {
+                    toastId: "last-name-required"
+                });
             }
             if (age === "") {
-                return toast.error("Age is required.");
+                return toast.error("Age is required.", {
+                    toastId: "age-required"
+                });
             }
             if (emailId === "") {
-                return toast.error("Email ID is required.");
+                return toast.error("Email ID is required.", {
+                    toastId: "emailId-required"
+                });
             }
             if (password === "") {
-                return toast.error("Password is required.");
+                return toast.error("Password is required.", {
+                    toastId: "password-required"
+                });
             }
 
             const res = await axios.post(

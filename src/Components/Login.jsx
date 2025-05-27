@@ -24,14 +24,16 @@ const Login = () => {
             dispatch(addUser(res?.data));
             if (res?.data?.status === 200) navigate("/");
         } catch (error) {
-            toast.error(error?.response?.data?.message);
+            toast.error(error?.response?.data?.message, {
+                toastId: error?.response?.data?.message
+            });
             console.log("ERROR:", error);
         }
     }
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
-            
+
             <div className="w-full md:w-1/2 bg-base-100 md:bg-base-200 lg:bg-base-200 flex items-center justify-center p-6 md:p-8">
                 <img
                     src={bugsAndBooleanLogo}

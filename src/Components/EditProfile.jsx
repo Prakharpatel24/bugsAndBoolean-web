@@ -53,7 +53,9 @@ const EditProfile = ({ user }) => {
             }
         } catch (error) {
             if (error?.response?.data?.status === 401) navigate("/login");
-            toast.error(error?.response?.data?.message || 'Something went wrong');
+            toast.error(error?.response?.data?.message || 'Something went wrong', {
+                toastId: error?.response?.data?.message || 'Something went wrong'
+            });
         }
     }
 

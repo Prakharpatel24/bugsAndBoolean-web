@@ -20,7 +20,9 @@ const useFetchRequests = () => {
                 navigate("/login");
             }
             if (err?.response?.data?.status !== 200) {
-                toast.error(err?.response?.data?.message);
+                toast.error(err?.response?.data?.message, {
+                    toastId: err?.response?.data?.message
+                });
             }
             console.log('Error:', err);
         }
