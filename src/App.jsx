@@ -14,6 +14,7 @@ import PrivacyPolicy from './Components/PrivacyPolicy'
 import TermsAndConditions from './Components/TermsAndConditions'
 import CancellationAndRefund from './Components/CancellationAndRefund'
 import ShippingAndDelivery from './Components/ShippingAndDelivery'
+import ContactUs from './Components/ContactUs'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path='terms-and-conditions' element={<TermsAndConditions />} />
               <Route path='cancellation-and-refund' element={<CancellationAndRefund />} />
               <Route path='shipping-and-delivery' element={<ShippingAndDelivery />} />
+              <Route path='contact-us' element={<ContactUs />} />
             </Route>
           </Routes>
         </BrowserRouter>
