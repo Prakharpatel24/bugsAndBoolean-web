@@ -8,7 +8,7 @@ const Footer = () => {
                 <Link to="/privacy-policy" className="link link-hover">Privacy policy</Link>
                 <Link to="/terms-and-conditions" className="link link-hover">Terms and Conditions</Link>
                 <Link to="cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
-                <a className="link link-hover">Shipping and Delivery</a>
+                <Link to="shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link>
                 <a className="link link-hover">Contact Us</a>
             </nav>
             <nav>
