@@ -8,8 +8,8 @@ const CancellationAndRefund = () => {
 
                 <div className="mockup-code bg-base-300 text-white-700 shadow-md rounded-lg p-6 text-sm sm:text-base leading-relaxed">
                     <pre className="whitespace-pre-wrap break-words">
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
-                            Cancelling Your Account
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
+                            1. Cancelling Your Account
                         </h3>
                         <code>
                             We're sad to see you go, but we understand things change!
@@ -21,8 +21,8 @@ const CancellationAndRefund = () => {
                             {'\n'} - In the meantime, feel free to contact us directly at [your email/contact link] and we'll help you with the process.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
-                            Refunds
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
+                            2. Refunds
                         </h3>
 
                         <code>
@@ -31,12 +31,16 @@ const CancellationAndRefund = () => {
                             {'\n'} If we introduce premium features or subscriptions in the future, we'll update this policy with clear terms regarding refunds for those services. Any such changes will be communicated to you in advance, as outlined in our Terms & Conditions.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
-                            Questions?
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
+                            3. Questions?
                         </h3>
                         <code>
                             If you have any questions about cancelling your account or our refund policy,
-                            don't hesitate to reach out to us at support@bugsandboolean.com. We're here to help!
+                            don't hesitate to reach out to us at {""}
+                            <a href="mailto:bugsandboolean@gmail.com" className="link-info">
+                                bugsandboolean@gmail.com
+                            </a>
+                            {""}. We're here to help!
                         </code>
                     </pre>
                 </div>
