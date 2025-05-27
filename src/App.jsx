@@ -12,6 +12,7 @@ import Requests from './Components/Requests'
 import SignUp from './Components/SignUp'
 import PrivacyPolicy from './Components/PrivacyPolicy'
 import TermsAndConditions from './Components/TermsAndConditions'
+import CancellationAndRefund from './Components/CancellationAndRefund'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path='signup' element={<SignUp />} />
               <Route path='privacy-policy' element={<PrivacyPolicy />} />
               <Route path='terms-and-conditions' element={<TermsAndConditions />} />
+              <Route path='cancellation-and-refund' element={<CancellationAndRefund />} />
             </Route>
           </Routes>
         </BrowserRouter>
