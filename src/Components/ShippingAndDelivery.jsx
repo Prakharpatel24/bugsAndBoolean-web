@@ -8,7 +8,7 @@ const ShippingAndDelivery = () => {
 
                 <div className="mockup-code bg-base-300 text-white-700 shadow-md rounded-lg p-6 text-sm sm:text-base leading-relaxed">
                     <pre className="whitespace-pre-wrap break-words">
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             1. Digital Delivery: Instant Access!
                         </h3>
                         <code>
@@ -19,7 +19,7 @@ const ShippingAndDelivery = () => {
                             There's no waiting for a package to arrive or for software to be mailed!
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             2. What We "Deliver":
                         </h3>
 
@@ -30,7 +30,7 @@ const ShippingAndDelivery = () => {
                             and don't require any action from your side
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             3. No Physical Goods (Currently)
                         </h3>
                         <code>
@@ -39,12 +39,16 @@ const ShippingAndDelivery = () => {
                             delivery times, or tracking numbers do not apply to our service.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             4. Questions?
                         </h3>
                         <code>
                             If you have any questions about how our digital platform works or how to access its features,
-                            feel free to reach out to us at support@bugsandboolean.com.. We're always here to help you get connected!
+                            feel free to reach out to us at {""}
+                            <a href="mailto:bugsandboolean@gmail.com" className="link-info">
+                                bugsandboolean@gmail.com
+                            </a>
+                            {""}. We're always here to help you get connected!
                         </code>
                     </pre>
                 </div>
