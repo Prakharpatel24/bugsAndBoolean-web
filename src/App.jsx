@@ -11,6 +11,7 @@ import Connections from './Components/Connections'
 import Requests from './Components/Requests'
 import SignUp from './Components/SignUp'
 import PrivacyPolicy from './Components/PrivacyPolicy'
+import TermsAndConditions from './Components/TermsAndConditions'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path='requests' element={<Requests />} />
               <Route path='signup' element={<SignUp />} />
               <Route path='privacy-policy' element={<PrivacyPolicy />} />
+              <Route path='terms-and-conditions' element={<TermsAndConditions />} />
             </Route>
           </Routes>
         </BrowserRouter>
