@@ -9,7 +9,7 @@ const Footer = () => {
                 <Link to="/terms-and-conditions" className="link link-hover">Terms and Conditions</Link>
                 <Link to="cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
                 <Link to="shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link>
-                <a className="link link-hover">Contact Us</a>
+                <Link to="contact-us" className="link link-hover">Contact Us</Link>
             </nav>
             <nav>
                 <h6 className="footer-title">Mission</h6>
