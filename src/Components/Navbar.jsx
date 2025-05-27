@@ -41,8 +41,11 @@ const Navbar = () => {
     return (
         <div className="sticky top-0 z-50 navbar bg-base-300 shadow-sm px-4 sm:px-6 md:px-10">
             <div className="flex-1">
-                <Link to="/" className="btn btn-ghost text-lg sm:text-xl">
-                    Bugs&Boolean
+                <Link
+                    to={userInfo ? "/" : "/login"}
+                    className="btn btn-ghost text-lg sm:text-xl"
+                >
+                    BugsAndBoolean
                 </Link>
             </div>
 
