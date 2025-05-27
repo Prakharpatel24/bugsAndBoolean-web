@@ -7,7 +7,7 @@ const Footer = () => {
                 <h6 className="footer-title">Terms and Policies</h6>
                 <Link to="/privacy-policy" className="link link-hover">Privacy policy</Link>
                 <Link to="/terms-and-conditions" className="link link-hover">Terms and Conditions</Link>
-                <a className="link link-hover">Cancellation and Refund</a>
+                <Link to="cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
                 <a className="link link-hover">Shipping and Delivery</a>
                 <a className="link link-hover">Contact Us</a>
             </nav>
