@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
                             As we grow, we’ll keep you updated with any changes.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             1. What Information We Collect
                         </h3>
 
@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
                             and we don’t use them to track you elsewhere.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             2. Why We Collect It
                         </h3>
                         <code>
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                             {'\n'} - Understand how people use the platform so we can improve it
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             3. Your Control
                         </h3>
                         <code>
@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
                             {'\n'} We’re still in early development, so if anything feels off—let us know, and we’ll fix it quickly.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             4. Security
                         </h3>
                         <code>
@@ -55,20 +55,23 @@ const PrivacyPolicy = () => {
                             Please report any suspicious activity.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             5. Changes
                         </h3>
                         <code>
                             We’ll update this page as new features roll out. Any major updates? You’ll hear from us directly.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             6. Talk to Us
                         </h3>
                         <code>
                             Questions? Feedback? Concerns?
-                            Drop us an email at support@bugsandboolean.com.
-                            Thanks for being part of the early journey at BugsAndBoolean 💻🐞
+                            Drop us an email at {""}
+                            <a href="mailto:bugsandboolean@gmail.com" className="link-info">
+                                bugsandboolean@gmail.com
+                            </a>
+                            {""}. Thanks for being part of the early journey at BugsAndBoolean 💻🐞
                         </code>
                     </pre>
                 </div>
