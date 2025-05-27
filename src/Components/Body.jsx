@@ -36,7 +36,7 @@ const Body = () => {
     return (
         <>
             <div className="min-h-screen flex flex-col">
-                <Navbar />
+                {userInfo && <Navbar />}
                 <div className="flex-grow">
                     <Outlet />
                 </div>
