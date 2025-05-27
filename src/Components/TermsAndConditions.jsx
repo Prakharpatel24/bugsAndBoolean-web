@@ -14,7 +14,7 @@ const TermsAndConditions = () => {
                             Please read them carefully.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             1. Acceptance of Terms
                         </h3>
 
@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
                             If you do not agree, you must refrain from using the platform.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             2. Acceptable Use
                         </h3>
                         <code>
@@ -40,7 +40,7 @@ const TermsAndConditions = () => {
                             {'\n'} - Collaborate on projects and discussions
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             3. Your Content
                         </h3>
                         <code>
@@ -49,7 +49,7 @@ const TermsAndConditions = () => {
                             We don’t claim ownership of your ideas or creations. Please only post content that belongs to you.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             4. Accounts and Login
                         </h3>
                         <code>
@@ -57,7 +57,7 @@ const TermsAndConditions = () => {
                             We use cookies to keep you logged in during a session. These are only used for session management and security purposes — not for tracking or advertising.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             5. Termination
                         </h3>
                         <code>
@@ -65,7 +65,7 @@ const TermsAndConditions = () => {
                             We reserve the right to suspend or remove accounts that violate these Terms or disrupt the platform.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             6. Beta Disclaimer
                         </h3>
                         <code>
@@ -74,18 +74,22 @@ const TermsAndConditions = () => {
                             Please report bugs responsibly!
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             7. Changes to These Terms
                         </h3>
                         <code>
                             We may update these Terms from time to time. When we do, we'll notify you through the app or via email.
                         </code>
 
-                        <h3 className="text-cyan-300 sm:text-2xl font-medium text-white-800 mt-6 mb-3">
+                        <h3 className="text-cyan-300 sm:text-2xl font-medium mt-6 mb-3">
                             8. Contact Us
                         </h3>
                         <code>
-                            Questions, suggestions, or bug reports? Reach out anytime at support@bugsandboolean.com.
+                            Questions, suggestions, or bug reports? Reach out anytime at {""}
+                            <a href="mailto:bugsandboolean@gmail.com" className="link-info">
+                                bugsandboolean@gmail.com
+                            </a>
+                            {""}.
                         </code>
                     </pre>
                 </div>
