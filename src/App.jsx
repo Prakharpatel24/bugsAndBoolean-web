@@ -15,6 +15,7 @@ import TermsAndConditions from './Components/TermsAndConditions'
 import CancellationAndRefund from './Components/CancellationAndRefund'
 import ShippingAndDelivery from './Components/ShippingAndDelivery'
 import ContactUs from './Components/ContactUs'
+import Chat from './Components/Chat'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
               <Route path='cancellation-and-refund' element={<CancellationAndRefund />} />
               <Route path='shipping-and-delivery' element={<ShippingAndDelivery />} />
               <Route path='contact-us' element={<ContactUs />} />
+              <Route path='chat/:targetUserId' element={<Chat />} />
             </Route>
           </Routes>
         </BrowserRouter>
