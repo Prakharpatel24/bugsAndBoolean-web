@@ -4,16 +4,17 @@ import UserCardFeed from "./UserCardFeed";
 import { useDispatch, useSelector } from "react-redux";
 import { isOpen } from "../utils/slice/navbarDropdownSlice";
 import useFetchConnections from "../utils/customHooks/useFetchConnections";
+import { Link } from "react-router";
 
 const Connections = () => {
     const dispatch = useDispatch();
     useFetchConnections();
-    const connectionData = useSelector((store)=> store.connections.connectionData);
-    
+    const connectionData = useSelector((store) => store.connections.connectionData);
+
     useEffect(() => {
         dispatch(isOpen(false));
     }, []);
-    
+
     return connectionData?.length === 0 ? (
         <div className="p-5 max-w-xl mx-auto">
             <div className="mockup-code w-full">
@@ -37,12 +38,17 @@ const Connections = () => {
                             <code>{connection?.firstName + " " + connection?.lastName}</code>
                         </pre>
 
-                        <button
-                            className="btn btn-primary whitespace-nowrap w-full sm:w-auto"
-                            onClick={() => document.getElementById(connection?._id).showModal()}
-                        >
-                            View Profile
-                        </button>
+                        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                            <button
+                                className="btn btn-primary whitespace-nowrap w-full sm:w-auto"
+                                onClick={() => document.getElementById(connection?._id).showModal()}
+                            >
+                                View Profile
+                            </button>
+                            <Link to={`/chat/${connection?._id}`}>
+                                <button className="btn btn-secondary whitespace-nowrap w-full sm:w-auto">Chat</button>
+                            </Link>
+                        </div>
 
                         <dialog
                             id={connection?._id}
