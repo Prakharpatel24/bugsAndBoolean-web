@@ -7,9 +7,9 @@ const Footer = () => {
                 <h6 className="footer-title">Terms and Policies</h6>
                 <Link to="/privacy-policy" className="link link-hover">Privacy policy</Link>
                 <Link to="/terms-and-conditions" className="link link-hover">Terms and Conditions</Link>
-                <Link to="cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
-                <Link to="shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link>
-                <Link to="contact-us" className="link link-hover">Contact Us</Link>
+                <Link to="/cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
+                <Link to="/shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link>
+                <Link to="/contact-us" className="link link-hover">Contact Us</Link>
             </nav>
             <nav>
                 <h6 className="footer-title">Mission</h6>
