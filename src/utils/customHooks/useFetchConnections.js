@@ -15,6 +15,7 @@ const useFetchConnections = () => {
             const res = await axios.get(BASE_URL + "/user/connections", { withCredentials: true });
             dispatch(setNumberOfConnections(res?.data?.data?.length));
             dispatch(addConnectionData(res?.data?.data));
+            return res?.data?.data
         } catch (err) {
             if (err?.response?.data?.status === 401) navigate("/login");
             if (err?.response?.data?.status !== 200) {
