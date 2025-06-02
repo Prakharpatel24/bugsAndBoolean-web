@@ -78,19 +78,21 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
                         </span>
                     </p>}
 
-                    {skills.length !== 0 && <div className="font-mono text-neutral-content">
-                        Skills:
-                        <div className="flex flex-wrap justify-center gap-1 mt-1">
-                            {(Array.isArray(skills) ? skills : skills.split(',')).map((skill, i) => (
-                                <span
-                                    key={i}
-                                    className="badge badge-accent badge-outline text-xs sm:text-sm px-2 py-1"
-                                >
-                                    {skill.trim()}
-                                </span>
-                            ))}
-                        </div>
-                    </div>}
+                    {skills.length !== 0
+                        && skills[0] !== ""
+                        && <div className="font-mono text-neutral-content">
+                            Skills:
+                            <div className="flex flex-wrap justify-center gap-1 mt-1">
+                                {(Array.isArray(skills) ? skills : skills.split(',')).map((skill, i) => (
+                                    <span
+                                        key={i}
+                                        className="badge badge-accent badge-outline text-xs sm:text-sm px-2 py-1"
+                                    >
+                                        {skill.trim()}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>}
 
                     {about && <div className="font-mono text-neutral-content">
                         About:
