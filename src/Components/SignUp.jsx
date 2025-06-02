@@ -16,6 +16,10 @@ const SignUp = () => {
     const [about, setAbout] = useState("");
     const [photoURL, setPhotoURL] = useState();
     const [skills, setSkills] = useState("");
+    const [githubUsername, setGithubUsername] = useState("");
+    const [instagramUsername, setInstagramUsername] = useState("");
+    const [linkedInUsername, setLinkedInUsername] = useState("");
+    const [xUsername, setXUsername] = useState("");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -48,9 +52,24 @@ const SignUp = () => {
                 });
             }
 
+            const payload = {
+                firstName,
+                lastName,
+                age,
+                emailId,
+                password,
+                gender,
+                about,
+                photoURL,
+                skills,
+                githubUsername,
+                instagramUsername,
+                linkedInUsername,
+                xUsername
+            }
             const res = await axios.post(
                 BASE_URL + "/auth/signup",
-                { firstName, lastName, age, emailId, password, gender, about, photoURL, skills },
+                payload,
                 { withCredentials: true }
             );
             if (res?.data?.status === 201) {
@@ -141,6 +160,38 @@ const SignUp = () => {
                         value={skills}
                         onChange={(e) => setSkills(e.target.value)}
                     ></textarea>
+
+                    <input
+                        type="text"
+                        placeholder="GitHub username"
+                        className="input input-bordered mb-3 w-full"
+                        value={githubUsername}
+                        onChange={(e) => setGithubUsername(e.target.value)}
+                    />
+
+                    <input
+                        type="text"
+                        placeholder="Instagram username"
+                        className="input input-bordered mb-3 w-full"
+                        value={instagramUsername}
+                        onChange={(e) => setInstagramUsername(e.target.value)}
+                    />
+
+                    <input
+                        type="text"
+                        placeholder="LinkedIn profile ID"
+                        className="input input-bordered mb-3 w-full"
+                        value={linkedInUsername}
+                        onChange={(e) => setLinkedInUsername(e.target.value)}
+                    />
+
+                    <input
+                        type="text"
+                        placeholder="X (formerly Twitter) username"
+                        className="input input-bordered mb-3 w-full"
+                        value={xUsername}
+                        onChange={(e) => setXUsername(e.target.value)}
+                    />
 
                     <div className="card-actions justify-center">
                         <button className="btn btn-primary w-full sm:w-auto" onClick={handleSubmitClick}>
