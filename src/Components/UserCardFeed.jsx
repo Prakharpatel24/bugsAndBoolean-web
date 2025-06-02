@@ -3,12 +3,26 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeFromFeed } from "../utils/slice/feedSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faInstagram, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const UserCardFeed = ({ user, showConnectionButtons }) => {
     console.log(user, "user");
-    const { _id, firstName, lastName, age, gender, about, photoURL, skills } = user;
-    console.log(about, "about");
+    const {
+        _id,
+        firstName,
+        lastName,
+        age,
+        gender,
+        about,
+        photoURL,
+        skills,
+        githubUsername,
+        instagramUsername,
+        linkedInUsername,
+        xUsername
+    } = user;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -64,7 +78,7 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
                         </span>
                     </p>}
 
-                    {skills[0] !== "" && <div className="font-mono text-neutral-content">
+                    {skills.length !== 0 && <div className="font-mono text-neutral-content">
                         Skills:
                         <div className="flex flex-wrap justify-center gap-1 mt-1">
                             {(Array.isArray(skills) ? skills : skills.split(',')).map((skill, i) => (
@@ -84,6 +98,56 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
                     </div>}
                 </div>
 
+                <div>
+                    {githubUsername
+                        && githubUsername !== ""
+                        && <a
+                            href={`https://github.com/${githubUsername}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon
+                                icon={faGithub}
+                                className="text-3xl mr-4 cursor-pointer hover:text-gray-600"
+                            />
+                        </a>}
+                    {instagramUsername
+                        && instagramUsername !== ""
+                        && <a
+                            href={`https://www.instagram.com/${instagramUsername}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon
+                                icon={faInstagram}
+                                className="text-3xl mr-4 cursor-pointer hover:text-pink-600"
+                            />
+                        </a>}
+                    {linkedInUsername
+                        && linkedInUsername !== ""
+                        && <a
+                            href={`https://www.linkedin.com/in/${linkedInUsername}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon
+                                icon={faLinkedin}
+                                className="text-3xl mr-4 cursor-pointer hover:text-blue-600"
+                            />
+                        </a>}
+                    {xUsername
+                        && xUsername !== ""
+                        && <a
+                            href={`https://x.com/${xUsername}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon
+                                icon={faXTwitter}
+                                className="text-3xl mr-4 cursor-pointer hover:text-gray-600"
+                            />
+                        </a>}
+                </div>
                 {showConnectionButtons && (
                     <div className="card-actions mt-5 flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
                         <button
