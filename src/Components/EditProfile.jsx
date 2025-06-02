@@ -17,6 +17,11 @@ const EditProfile = ({ user }) => {
     const [photoURL, setPhotoURL] = useState(user?.photoURL);
     const [skills, setSkills] = useState(user?.skills);
     const [currentSkills, setCurrentSkills] = useState([...skills]);
+    const [githubUsername, setGithubUsername] = useState(user?.githubUsername);
+    const [instagramUsername, setInstagramUsername] = useState(user?.instagramUsername);
+    const [linkedInUsername, setLinkedInUsername] = useState(user?.linkedInUsername);
+    const [xUsername, setXUsername] = useState(user?.xUsername);
+
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -41,7 +46,11 @@ const EditProfile = ({ user }) => {
                     gender,
                     about,
                     photoURL,
-                    skills
+                    skills,
+                    githubUsername,
+                    instagramUsername,
+                    linkedInUsername,
+                    xUsername
                 },
                 {
                     withCredentials: true
@@ -124,6 +133,38 @@ const EditProfile = ({ user }) => {
                         onKeyDown={handleKeyDown}
                     />
 
+                    <label className="block mb-1 font-semibold">GitHub username</label>
+                    <input
+                        type="text"
+                        className="input input-bordered w-full mb-4 text-gray-400"
+                        value={githubUsername}
+                        onChange={(e) => setGithubUsername(e.target.value)}
+                    />
+
+                    <label className="block mb-1 font-semibold">Instagram username</label>
+                    <input
+                        type="text"
+                        className="input input-bordered w-full mb-4 text-gray-400"
+                        value={instagramUsername}
+                        onChange={(e) => setInstagramUsername(e.target.value)}
+                    />
+
+                    <label className="block mb-1 font-semibold">LinkedIn profile ID</label>
+                    <input
+                        type="text"
+                        className="input input-bordered w-full mb-4 text-gray-400"
+                        value={linkedInUsername}
+                        onChange={(e) => setLinkedInUsername(e.target.value)}
+                    />
+
+                    <label className="block mb-1 font-semibold">X (formerly Twitter) username</label>
+                    <input
+                        type="text"
+                        className="input input-bordered w-full mb-4 text-gray-400"
+                        value={xUsername}
+                        onChange={(e) => setXUsername(e.target.value)}
+                    />
+
                     <div className="card-actions justify-center mt-2">
                         <button
                             className="btn btn-primary w-full md:w-auto"
@@ -145,6 +186,10 @@ const EditProfile = ({ user }) => {
                         about,
                         photoURL,
                         skills,
+                        githubUsername,
+                        instagramUsername,
+                        linkedInUsername,
+                        xUsername
                     }}
                     showConnectionButtons={false}
                 />
