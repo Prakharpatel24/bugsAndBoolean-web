@@ -93,7 +93,7 @@ const EditProfile = ({ user }) => {
                     <label className="block mb-1 font-semibold">Age</label>
                     <input
                         type="text"
-                        className="input input-bordered w-full mb-4 ttext-gray-400"
+                        className="input input-bordered w-full mb-4 text-gray-400"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
                     />
