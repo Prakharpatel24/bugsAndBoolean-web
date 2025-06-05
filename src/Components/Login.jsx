@@ -88,11 +88,14 @@ const Login = () => {
                             Login
                         </button>
 
-                        <div>
-                            <GoogleLogin
-                                text="continue_with"
-                                onSuccess={handleGoogleLogin}
-                            />
+                        <div className="flex justify-center">
+                            <div style={{ minWidth: '100%', height: '40px' }}>
+                                <GoogleLogin
+                                    text="continue_with"
+                                    onSuccess={handleGoogleLogin}
+                                    width="100%"
+                                />
+                            </div>
                         </div>
                     </div>
 
