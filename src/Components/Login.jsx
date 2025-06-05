@@ -6,12 +6,30 @@ import { addUser } from "../utils/slice/userSlice";
 import { BASE_URL } from "../utils/constants";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const handleGoogleLogin = async (credentialResponse) => {
+        try {
+            const res = await axios.post(
+                BASE_URL + "/auth/login-with-google",
+                { credentialResponse },
+                { withCredentials: true }
+            );
+            dispatch(addUser(res?.data));
+            if (res?.data?.status === 200) navigate("/");
+        } catch (error) {
+            toast.error(error?.response?.data?.message, {
+                toastId: error?.response?.data?.message
+            });
+            console.log("ERROR:", error);
+        }
+    }
 
     const handleSubmit = async () => {
         try {
@@ -69,6 +87,13 @@ const Login = () => {
                         >
                             Login
                         </button>
+
+                        <div>
+                            <GoogleLogin
+                                text="continue_with"
+                                onSuccess={handleGoogleLogin}
+                            />
+                        </div>
                     </div>
 
                     <p className="mt-4 text-center text-sm">
