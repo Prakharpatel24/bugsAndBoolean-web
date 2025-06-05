@@ -66,7 +66,7 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
                 </h2>
 
                 <div className="text-sm sm:text-base space-y-2 mb-4">
-                    <p className="font-mono text-neutral-content">Runtime: <span className="text-primary">{age} years</span></p>
+                    {age && <p className="font-mono text-neutral-content">Runtime: <span className="text-primary">{age} years</span></p>}
                     {gender && <p
                         className="font-mono text-neutral-content"
                     >
