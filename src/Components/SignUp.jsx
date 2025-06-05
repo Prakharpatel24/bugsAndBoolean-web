@@ -5,24 +5,36 @@ import { BASE_URL } from "../utils/constants";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slice/userSlice";
+import { GoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [age, setAge] = useState("");
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
-    const [gender, setGender] = useState("");
-    const [about, setAbout] = useState("");
-    const [photoURL, setPhotoURL] = useState();
-    const [skills, setSkills] = useState("");
-    const [githubUsername, setGithubUsername] = useState("");
-    const [instagramUsername, setInstagramUsername] = useState("");
-    const [linkedInUsername, setLinkedInUsername] = useState("");
-    const [xUsername, setXUsername] = useState("");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const handleGoogleSignUp = async (credentialResponse) => {
+        try {
+            const res = await axios.post(
+                BASE_URL + "/auth/signup-with-google",
+                { credentialResponse },
+                { withCredentials: true }
+            );
+            if (res?.data?.status === 201) {
+                toast.success(res?.data?.message);
+                dispatch(addUser(res?.data));
+                return navigate("/");
+            }
+        } catch (err) {
+            if (err?.response?.data?.status !== 201) {
+                toast.error(err?.response?.data?.message);
+            }
+            console.log("ERROR:", err);
+        }
+    }
 
     const handleSubmitClick = async () => {
         try {
@@ -34,11 +46,6 @@ const SignUp = () => {
             if (lastName === "") {
                 return toast.error("Last name is required.", {
                     toastId: "last-name-required"
-                });
-            }
-            if (age === "") {
-                return toast.error("Age is required.", {
-                    toastId: "age-required"
                 });
             }
             if (emailId === "") {
@@ -55,17 +62,8 @@ const SignUp = () => {
             const payload = {
                 firstName,
                 lastName,
-                age,
                 emailId,
-                password,
-                gender,
-                about,
-                photoURL,
-                skills,
-                githubUsername,
-                instagramUsername,
-                linkedInUsername,
-                xUsername
+                password
             }
             const res = await axios.post(
                 BASE_URL + "/auth/signup",
@@ -91,6 +89,19 @@ const SignUp = () => {
                 <div className="card-body">
                     <h2 className="card-title mb-4 text-center">Sign Up</h2>
 
+                    <div className="flex justify-center my-4">
+                        <GoogleLogin
+                            text="signup_with"
+                            onSuccess={handleGoogleSignUp}
+                        />
+                    </div>
+
+                    <div className="flex items-center my-4">
+                        <hr className="flex-grow border-t border-gray-400" />
+                        <span className="mx-4 text-gray-500">OR</span>
+                        <hr className="flex-grow border-t border-gray-400" />
+                    </div>
+
                     <input
                         type="text"
                         placeholder="Firstname"
@@ -106,15 +117,7 @@ const SignUp = () => {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
-
-                    <input
-                        type="text"
-                        placeholder="Age"
-                        className="input input-bordered mb-3 w-full"
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                    />
-
+                    
                     <input
                         type="text"
                         placeholder="Email"
@@ -129,68 +132,6 @@ const SignUp = () => {
                         className="input input-bordered mb-3 w-full"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Gender"
-                        className="input input-bordered mb-3 w-full"
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value)}
-                    />
-
-                    <textarea
-                        placeholder="About"
-                        className="textarea textarea-bordered mb-3 w-full"
-                        value={about}
-                        onChange={(e) => setAbout(e.target.value)}
-                    ></textarea>
-
-                    <input
-                        type="text"
-                        placeholder="Photo URL"
-                        className="input input-bordered mb-3 w-full"
-                        value={photoURL}
-                        onChange={(e) => setPhotoURL(e.target.value)}
-                    />
-
-                    <textarea
-                        placeholder="Skills"
-                        className="textarea textarea-bordered mb-4 w-full"
-                        value={skills}
-                        onChange={(e) => setSkills(e.target.value)}
-                    ></textarea>
-
-                    <input
-                        type="text"
-                        placeholder="GitHub username"
-                        className="input input-bordered mb-3 w-full"
-                        value={githubUsername}
-                        onChange={(e) => setGithubUsername(e.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Instagram username"
-                        className="input input-bordered mb-3 w-full"
-                        value={instagramUsername}
-                        onChange={(e) => setInstagramUsername(e.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="LinkedIn profile ID"
-                        className="input input-bordered mb-3 w-full"
-                        value={linkedInUsername}
-                        onChange={(e) => setLinkedInUsername(e.target.value)}
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="X (formerly Twitter) username"
-                        className="input input-bordered mb-3 w-full"
-                        value={xUsername}
-                        onChange={(e) => setXUsername(e.target.value)}
                     />
 
                     <div className="card-actions justify-center">
