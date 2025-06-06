@@ -58,7 +58,7 @@ const EditProfile = ({ user }) => {
             )
             if (res?.data?.status === 201) {
                 dispatch(addUser(res?.data));
-                toast.success("Profile updates successfuly");
+                toast.success("Profile updated successfuly");
             }
         } catch (error) {
             if (error?.response?.data?.status === 401) navigate("/login");
