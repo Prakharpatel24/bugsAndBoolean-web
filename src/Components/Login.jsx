@@ -16,9 +16,10 @@ const Login = () => {
 
     const handleGoogleLogin = async (credentialResponse) => {
         try {
+            const { credential } = credentialResponse;
             const res = await axios.post(
                 BASE_URL + "/auth/login-with-google",
-                { credentialResponse },
+                { credential },
                 { withCredentials: true }
             );
             dispatch(addUser(res?.data));
