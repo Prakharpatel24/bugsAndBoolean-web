@@ -18,15 +18,22 @@ const SignUp = () => {
 
     const handleGoogleSignUp = async (credentialResponse) => {
         try {
+            const { credential } = credentialResponse;
             const res = await axios.post(
                 BASE_URL + "/auth/signup-with-google",
-                { credentialResponse },
+                { credential },
                 { withCredentials: true }
             );
             if (res?.data?.status === 201) {
-                toast.success(res?.data?.message);
+                toast.success(
+                    "Welcome! Your account has been created successfully. Tell us more about you to start connecting.",
+                    {
+                        toastId: "new_user",
+                        autoClose: 5000
+                    },
+                );
                 dispatch(addUser(res?.data));
-                return navigate("/");
+                return navigate("/profile");
             }
         } catch (err) {
             if (err?.response?.data?.status !== 201) {
@@ -117,7 +124,7 @@ const SignUp = () => {
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
-                    
+
                     <input
                         type="text"
                         placeholder="Email"
@@ -139,6 +146,17 @@ const SignUp = () => {
                             Submit
                         </button>
                     </div>
+
+                    <p className="mt-4 text-center text-sm">
+                        {/* New to <strong>Bugs&Boolean</strong>?{" "} */}
+                        Already have an account?{" "}
+                        <Link
+                            to="/login"
+                            className="link link-info hover:underline"
+                        >
+                            Log in
+                        </Link>
+                    </p>
                 </div>
             </div>
         </div>
