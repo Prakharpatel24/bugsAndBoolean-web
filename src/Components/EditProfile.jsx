@@ -14,6 +14,7 @@ const EditProfile = ({ user }) => {
     const [age, setAge] = useState(user?.age);
     const [gender, setGender] = useState(user?.gender);
     const [about, setAbout] = useState(user?.about);
+    const [file, setFile] = useState(null);
     const [photoURL, setPhotoURL] = useState(user?.photoURL);
     const [skills, setSkills] = useState(user?.skills);
     const [currentSkills, setCurrentSkills] = useState([...skills]);
@@ -36,27 +37,31 @@ const EditProfile = ({ user }) => {
         dispatch(isOpen(false));
     }, []);
 
-    const handleSubmitClick = async () => {
+    const handleSubmitClick = async (e) => {
         try {
+            const formData = new FormData();
+            if (file) {
+                formData.append("profileImage", file);
+            }
+            formData.append("firstName", firstName);
+            formData.append("lastName", lastName);
+            formData.append("age", age);
+            formData.append("gender", gender);
+            formData.append("about", about);
+            formData.append("skills", skills);
+            formData.append("githubUsername", githubUsername);
+            formData.append("instagramUsername", instagramUsername);
+            formData.append("linkedInUsername", linkedInUsername);
+            formData.append("xUsername", xUsername);
+
             const res = await axios.post(BASE_URL + "/profile/edit",
-                {
-                    firstName,
-                    lastName,
-                    age,
-                    gender,
-                    about,
-                    photoURL,
-                    skills,
-                    githubUsername,
-                    instagramUsername,
-                    linkedInUsername,
-                    xUsername
-                },
+                formData,
                 {
                     withCredentials: true
                 }
             )
             if (res?.data?.status === 201) {
+                setPhotoURL(res?.data?.photoURL);
                 dispatch(addUser(res?.data));
                 toast.success("Profile updated successfuly");
             }
@@ -106,6 +111,25 @@ const EditProfile = ({ user }) => {
                         onChange={(e) => setGender(e.target.value)}
                     />
 
+                    <label className="block mb-1 font-semibold">Upload Picture</label>
+                    {/* <div className="mb-4">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => setFile(e.target.files[0])}
+                            className="block w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/80"
+                        />
+                    </div> */}
+
+                    <div className="mb-4">
+                        <input
+                            type="file"
+                            className="btn btn-primary file-input file-input-ghost p-0"
+                            accept="image/*"
+                            onChange={(e) => setFile(e.target.files[0])}
+                        />
+                    </div>
+
                     <label className="block mb-1 font-semibold">About</label>
                     <textarea
                         className="textarea textarea-bordered w-full mb-4 text-gray-400 resize-none"
@@ -114,13 +138,13 @@ const EditProfile = ({ user }) => {
                         rows={4}
                     />
 
-                    <label className="block mb-1 font-semibold">PhotoURL</label>
-                    <input
+                    {/* <label className="block mb-1 font-semibold">PhotoURL</label> */}
+                    {/* <input
                         type="text"
                         className="input input-bordered w-full mb-4 text-gray-400"
                         value={photoURL}
                         onChange={(e) => setPhotoURL(e.target.value)}
-                    />
+                    /> */}
 
                     <label className="block mb-1 font-semibold">
                         Skills (Done? Just hit Enter)
