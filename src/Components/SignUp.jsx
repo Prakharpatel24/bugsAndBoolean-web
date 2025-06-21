@@ -8,6 +8,7 @@ import { addUser } from "../utils/slice/userSlice";
 import { GoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [emailId, setEmailId] = useState("");
@@ -18,6 +19,7 @@ const SignUp = () => {
 
     const handleGoogleSignUp = async (credentialResponse) => {
         try {
+            setIsLoading(true);
             const { credential } = credentialResponse;
             const res = await axios.post(
                 BASE_URL + "/auth/signup-with-google",
@@ -40,6 +42,8 @@ const SignUp = () => {
                 toast.error(err?.response?.data?.message);
             }
             console.log("ERROR:", err);
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -65,7 +69,7 @@ const SignUp = () => {
                     toastId: "password-required"
                 });
             }
-
+            setIsLoading(true);
             const payload = {
                 firstName,
                 lastName,
@@ -80,18 +84,26 @@ const SignUp = () => {
             if (res?.data?.status === 201) {
                 toast.success(res?.data?.message);
                 dispatch(addUser(res?.data));
-                return navigate("/");
+                return navigate("/profile");
             }
         } catch (err) {
             if (err?.response?.data?.status !== 201) {
                 toast.error(err?.response?.data?.message);
             }
             console.log("ERROR:", err);
+        } finally {
+            setIsLoading(false);
         }
     };
 
     return (
         <div className="flex justify-center items-center min-h-screen px-4 py-10 sm:py-20">
+            {isLoading && (
+                <div className="fixed inset-0 bg-base-100 flex items-center justify-center z-50">
+                    <span className="loading loading-spinner loading-lg text-primary" />
+                    <p className="ml-4">Creating your account...</p>
+                </div>
+            )}
             <div className="card card-border bg-base-300 w-full max-w-md shadow-lg">
                 <div className="card-body">
                     <h2 className="card-title mb-4 text-center">Sign Up</h2>

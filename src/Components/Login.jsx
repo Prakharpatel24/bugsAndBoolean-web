@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Login = () => {
 
     const handleGoogleLogin = async (credentialResponse) => {
         try {
+            setIsLoading(true);
             const { credential } = credentialResponse;
             const res = await axios.post(
                 BASE_URL + "/auth/login-with-google",
@@ -28,13 +30,16 @@ const Login = () => {
             toast.error(error?.response?.data?.message, {
                 toastId: error?.response?.data?.message
             });
-            if(error?.status === 400) navigate("/signup")
+            if (error?.status === 400) navigate("/signup")
             console.log("ERROR:", error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
     const handleSubmit = async () => {
         try {
+            setIsLoading(true);
             const res = await axios.post(BASE_URL + "/auth/login", {
                 emailId,
                 password
@@ -48,12 +53,19 @@ const Login = () => {
                 toastId: error?.response?.data?.message
             });
             console.log("ERROR:", error);
+        } finally {
+            setIsLoading(false);
         }
     }
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
-
+            {isLoading && (
+                <div className="fixed inset-0 bg-base-100 flex items-center justify-center z-50">
+                    <span className="loading loading-spinner loading-lg text-primary" />
+                    <p className="ml-4">Signing you in...</p>
+                </div>
+            )}
             <div className="w-full md:w-1/2 bg-base-100 md:bg-base-200 lg:bg-base-200 flex items-center justify-center p-6 md:p-8">
                 <img
                     src={bugsAndBooleanLogo}
