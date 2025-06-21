@@ -65,7 +65,7 @@ const Navbar = () => {
                                 <div className="w-9 sm:w-10 rounded-full">
                                     <img
                                         alt="User Avatar"
-                                        src={userInfo?.data?.photoURL}
+                                        src={`${userInfo?.data?.photoURL}?v=${new Date().getTime()}`}
                                         className="object-cover"
                                     />
                                 </div>
