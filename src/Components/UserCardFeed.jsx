@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram, faLinkedin, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const UserCardFeed = ({ user, showConnectionButtons }) => {
-    console.log(user, "user");
+    // console.log(user, "user");
     const {
         _id,
         firstName,
@@ -23,7 +23,7 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
         linkedInUsername,
         xUsername
     } = user;
-
+    const profileImgURL = photoURL?.split(":")[0];
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -50,12 +50,12 @@ const UserCardFeed = ({ user, showConnectionButtons }) => {
             console.log('ERROR:', err);
         }
     }
-    const highResPhotoURL = photoURL?.replace(/=s\d+-c$/, '=s400-c');
+
     return (
         <div className="mockup-code w-full max-w-sm sm:max-w-md md:max-w-lg bg-base-300 shadow-xl rounded-xl p-5 sm:p-8 border border-base-200">
             <figure className="w-full flex justify-center mb-6">
                 <img
-                    src={highResPhotoURL}
+                    src={profileImgURL !== "blob" ? `${photoURL}?v=${new Date().getTime()}` : photoURL}
                     alt="Profile"
                     className="w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full object-cover ring ring-accent ring-offset-base-100 ring-offset-2 shadow-md"
                 />
