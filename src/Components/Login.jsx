@@ -28,6 +28,7 @@ const Login = () => {
             toast.error(error?.response?.data?.message, {
                 toastId: error?.response?.data?.message
             });
+            if(error?.status === 400) navigate("/signup")
             console.log("ERROR:", error);
         }
     }
