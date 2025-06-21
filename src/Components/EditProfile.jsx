@@ -16,6 +16,7 @@ const EditProfile = ({ user }) => {
     const [about, setAbout] = useState(user?.about);
     const [file, setFile] = useState(null);
     const [photoURL, setPhotoURL] = useState(user?.photoURL);
+    const [previewUrl, setPreviewURL] = useState("");
     const [skills, setSkills] = useState(user?.skills);
     const [currentSkills, setCurrentSkills] = useState([...skills]);
     const [githubUsername, setGithubUsername] = useState(user?.githubUsername);
@@ -37,7 +38,7 @@ const EditProfile = ({ user }) => {
         dispatch(isOpen(false));
     }, []);
 
-    const handleSubmitClick = async (e) => {
+    const handleSubmitClick = async () => {
         try {
             const formData = new FormData();
             if (file) {
@@ -126,7 +127,12 @@ const EditProfile = ({ user }) => {
                             type="file"
                             className="btn btn-primary file-input file-input-ghost p-0"
                             accept="image/*"
-                            onChange={(e) => setFile(e.target.files[0])}
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                setFile(file);
+                                setPreviewURL(URL.createObjectURL(file));
+                                setPhotoURL("");
+                            }}
                         />
                     </div>
 
@@ -208,7 +214,7 @@ const EditProfile = ({ user }) => {
                         age,
                         gender,
                         about,
-                        photoURL,
+                        photoURL: photoURL === "" ? previewUrl : photoURL,
                         skills,
                         githubUsername,
                         instagramUsername,
