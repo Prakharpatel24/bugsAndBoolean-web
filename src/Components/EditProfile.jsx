@@ -62,7 +62,8 @@ const EditProfile = ({ user }) => {
                 }
             )
             if (res?.data?.status === 201) {
-                setPhotoURL(res?.data?.photoURL);
+                setPhotoURL(res?.data?.data?.photoURL);
+                setPreviewURL("");
                 dispatch(addUser(res?.data));
                 toast.success("Profile updated successfuly");
             }
