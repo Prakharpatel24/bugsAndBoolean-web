@@ -60,12 +60,12 @@ const Login = () => {
 
     return (
         <div className="min-h-screen flex flex-col md:flex-row">
-            {isLoading && (
+            {/* {isLoading && (
                 <div className="fixed inset-0 bg-base-100 flex items-center justify-center z-50">
                     <span className="loading loading-spinner loading-lg text-primary" />
-                    <p className="ml-4">Signing you in...</p>
+                    <p className="ml-4">Authenticating...</p>
                 </div>
-            )}
+            )} */}
             <div className="w-full md:w-1/2 bg-base-100 md:bg-base-200 lg:bg-base-200 flex items-center justify-center p-6 md:p-8">
                 <img
                     src={bugsAndBooleanLogo}
@@ -98,15 +98,18 @@ const Login = () => {
                         <button
                             className="btn btn-primary w-full"
                             onClick={handleSubmit}
+                            disabled={isLoading}
                         >
                             Login
                         </button>
 
                         <div className="flex justify-center items-center">
-                            <GoogleLogin
-                                text="continue_with"
-                                onSuccess={handleGoogleLogin}
-                            />
+                            {isLoading
+                                ? (<span className="loading loading-spinner loading-lg text-primary"></span>)
+                                : <GoogleLogin
+                                    text="continue_with"
+                                    onSuccess={handleGoogleLogin}
+                                />}
                         </div>
                     </div>
 

@@ -98,21 +98,23 @@ const SignUp = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen px-4 py-10 sm:py-20">
-            {isLoading && (
+            {/* {isLoading && (
                 <div className="fixed inset-0 bg-base-100 flex items-center justify-center z-50">
                     <span className="loading loading-spinner loading-lg text-primary" />
                     <p className="ml-4">Creating your account...</p>
                 </div>
-            )}
+            )} */}
             <div className="card card-border bg-base-300 w-full max-w-md shadow-lg">
                 <div className="card-body">
                     <h2 className="card-title mb-4 text-center">Sign Up</h2>
 
                     <div className="flex justify-center my-4">
-                        <GoogleLogin
-                            text="signup_with"
-                            onSuccess={handleGoogleSignUp}
-                        />
+                        {isLoading
+                            ? (<span className="loading loading-spinner loading-lg text-primary"></span>)
+                            : <GoogleLogin
+                                text="continue_with"
+                                onSuccess={handleGoogleSignUp}
+                            />}
                     </div>
 
                     <div className="flex items-center my-4">
@@ -154,7 +156,11 @@ const SignUp = () => {
                     />
 
                     <div className="card-actions justify-center">
-                        <button className="btn btn-primary w-full sm:w-auto" onClick={handleSubmitClick}>
+                        <button
+                            className="btn btn-primary w-full sm:w-auto"
+                            onClick={handleSubmitClick}
+                            disabled={isLoading}
+                        >
                             Submit
                         </button>
                     </div>
