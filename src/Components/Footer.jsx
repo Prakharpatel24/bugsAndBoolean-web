@@ -4,11 +4,11 @@ const Footer = () => {
     return (
         <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 w-full">
             <nav>
-                <h6 className="footer-title">Terms and Policies</h6>
-                <Link to="/privacy-policy" className="link link-hover">Privacy policy</Link>
+                <h6 className="footer-title">Support</h6>
+                {/* <Link to="/privacy-policy" className="link link-hover">Privacy policy</Link>
                 <Link to="/terms-and-conditions" className="link link-hover">Terms and Conditions</Link>
                 <Link to="/cancellation-and-refund" className="link link-hover">Cancellation and Refund</Link>
-                <Link to="/shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link>
+                <Link to="/shipping-and-delivery" className="link link-hover">Shipping and Delivery</Link> */}
                 <Link to="/contact-us" className="link link-hover">Contact Us</Link>
             </nav>
             <nav>
